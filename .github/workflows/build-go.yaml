@@ -38,7 +38,7 @@ jobs:
           GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o output/widdler-${{ matrix.goos }}-${{ matrix.goarch }} main.go
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: widdler-${{ matrix.goos }}-${{ matrix.goarch }}
           path: output/widdler-${{ matrix.goos }}-${{ matrix.goarch }}
