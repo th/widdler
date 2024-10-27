@@ -40,5 +40,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: myapp-${{ matrix.goos }}-${{ matrix.goarch }}
-          path: output/myapp-${{ matrix.goos }}-${{ matrix.goarch }}
+          name: widdler-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: output/widdler-${{ matrix.goos }}-${{ matrix.goarch }}
