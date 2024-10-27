@@ -7,7 +7,7 @@ on:
     inputs:
       branch:
         required: true
-        default: "workflow-action"
+        default: "action-workflow"
 
 permissions:
     contents: write
