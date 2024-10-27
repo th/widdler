@@ -6,7 +6,6 @@ import (
 	"encoding/csv"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -46,9 +45,9 @@ const landingPage = `
 `
 
 var (
-	twFile = "empty-5.2.1.html"
+	twFile = "empty-5.3.3.html"
 
-	//go:embed empty-5.2.1.html
+	//go:embed empty-5.3.3.html
 	tiddly embed.FS
 	templ  *template.Template
 )
@@ -152,7 +151,7 @@ func createEmpty(path string) error {
 	if os.IsNotExist(fErr) {
 		log.Printf("creating %q\n", path)
 		twData, _ := tiddly.ReadFile(twFile)
-		wErr := ioutil.WriteFile(path, twData, 0600)
+		wErr := os.WriteFile(path, twData, 0600)
 		if wErr != nil {
 			return wErr
 		}
@@ -400,7 +399,8 @@ func main() {
 	}))
 
 	s := http.Server{
-		Handler: mux,
+		Handler:           mux,
+		ReadHeaderTimeout: 0,
 	}
 
 	lis, err := net.Listen("tcp", listen)

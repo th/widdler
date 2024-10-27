@@ -2,3 +2,8 @@ widdler
 .htpasswd
 dist/
 .idea
+.direnv
+*.bak
+result
+tags
+wikis
